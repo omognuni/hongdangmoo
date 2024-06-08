@@ -17,7 +17,7 @@ def test_remove_from_cart():
     line = CartLine(product=product, qty=2)
     cart = Cart(cart_lines=[line])
 
-    remove_from_cart(cart, product, qty=1)
+    remove_from_cart(cart, product)
 
     assert product.available_quantity == 10
     assert cart.cart_lines[0].qty == 1
