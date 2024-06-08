@@ -26,7 +26,7 @@ class CartLine:
 
 
 class Cart:
-    def __init__(self, cart_lines: list):
+    def __init__(self, cart_lines: list = []):
         self.cart_lines = cart_lines
 
 
