@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 
 class Product:
@@ -24,10 +25,24 @@ class CartLine:
         self.product = product
         self.qty = qty
 
+    def update_quantity(self, qty: int):
+        self.product.available_quantity += self.qty - qty
+        self.qty = qty
+
 
 class Cart:
-    def __init__(self, cart_lines: list = []):
-        self.cart_lines = cart_lines
+    def __init__(self):
+        self.cart_lines: List[CartLine] = []
+
+    def add_product(self, product: Product, qty: int):
+        for cart_line in self.cart_lines:
+            if cart_line.product == product:
+                cart_line.update_quantity(qty)
+                return
+        self.cart_lines.append(CartLine(product, qty))
+
+    def remove_product(self, product: Product):
+        self.cart_lines = [line for line in self.cart_lines if line.product != product]
 
 
 class Order:

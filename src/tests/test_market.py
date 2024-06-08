@@ -13,10 +13,10 @@ def test_add_product_to_cart():
 
 def test_remove_from_cart():
     product = Product(id=1, name="Keyboard", price=1000, available_quantity=9)
-    line = CartLine(product=product, qty=2)
-    cart = Cart(cart_lines=[line])
+    cart = Cart()
+    add_to_cart(cart, product, qty=2)
 
     remove_from_cart(cart, product)
 
-    assert product.available_quantity == 11
+    assert product.available_quantity == 9
     assert cart.cart_lines == []
