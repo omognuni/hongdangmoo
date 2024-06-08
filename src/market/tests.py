@@ -10,7 +10,9 @@ def remove_from_cart(cart, product, qty):
 
 
 def test_add_product_to_cart():
-    product = Product(id="keyboard-001", name="Keyboard", available_quantity=10)
+    product = Product(
+        id="keyboard-001", name="Keyboard", price=1000, available_quantity=10
+    )
     cart = Cart()
 
     add_to_cart(cart, product, qty=1)
@@ -19,7 +21,9 @@ def test_add_product_to_cart():
 
 
 def test_remove_from_cart():
-    product = Product(id="keyboard-001", name="Keyboard", available_quantity=9)
+    product = Product(
+        id="keyboard-001", name="Keyboard", price=1000, available_quantity=9
+    )
     line = CartLine(product=product, qty=2)
     cart = Cart(products=[line])
 
